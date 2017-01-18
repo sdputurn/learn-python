@@ -73,7 +73,50 @@ print ("%d and a new line %s"%(float(num) , "\n")) # where this line is treated 
 #operators
 num1=9
 num2=2
-print ("num1+num2, num1-num2, num1*num2, num1/num2, num1%num2, num1//num2, num1>num2, num1==num2", num1+num2, num1-num2, num1*num2, float(float(num1)/num2), num1%num2, num1//num2, num1>num2, num1==num2)
+print ("num1+num2, num1-num2, num1*num2, num1/num2, num1%num2, num1//num2, num1>num2, num1==num2 - ", num1+num2, num1-num2, num1*num2, float(float(num1)/num2), num1%num2, num1//num2, num1>num2, num1==num2)
+
+#logical operators
+var1 = "hello world!"
+var2 = "hello"
+print ("\nvar2 in var1, var2 not in var1, var2 is var1, var2 is not var1 - ", var2 in var1, var2 not in var1, var2 is var1, var2 is not var1)
+
+#decision making
+num1 = 2
+num2 = 5
+num3 = 9
+#find max
+if (num1 > num2):
+	if num1 > num3 :
+		print "num1 is greater numner - %d" % num1
+	else :
+		print ("num3 is grater numner - %d" %num3)
+elif (num2 > num3) :
+	print ("num2 is the greater numner - %d " % (num2))
+else :
+	print ("num3 is grater numner - %d" % (num3))
+#loops
+#print patter like below
+#*
+#* *
+#* * *  #till 5 lines
+import sys
+
+for i in range (1,6):
+	for j in range (0,i):
+		#print ("* ")
+		sys.stdout.write("* ")
+	print ("\n")
+#same thing with while
+i=0
+while (i<5): 
+	j=0
+	while (j <= i):
+		sys.stdout.write("* ")
+		j=j+1
+		#or j += 1
+	i += 1
+	print ("\n")
+
 
 
 
