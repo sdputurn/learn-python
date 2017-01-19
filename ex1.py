@@ -67,6 +67,8 @@ print (dict.values() , "\n")
 num = 111
 print (float(num) , "\n" ) #seems like print convets do a ttpe conversions on the item it prints. seems like this is converted into a tuple
 print ("%d and a new line %s"%(float(num) , "\n")) # where this line is treated a string
+#print ("sting" + 10) #this is not allowed as we concatinating 2 different data types
+#print ("string", 10, list, tupple ) # this is valid, where i guess the output is a tupple of all values
 #print (str(num))
 #print (eval(num))
 
@@ -116,6 +118,85 @@ while (i<5):
 		#or j += 1
 	i += 1
 	print ("\n")
+
+#date and time
+import time
+ticks = time.time()
+print ("numner of ticks since 12:00 am 1-jan-1970", ticks)
+
+#localltime
+localtime = time.localtime(time.time())
+print ("localtime", localtime)
+
+print ("asctime", time.asctime())
+
+#calendar
+import calendar
+print("here is the cal %s" %("\n"))
+print (calendar.month(2017,1))
+
+def printme(str):
+	"this function print the given string parameter"
+	print (str)
+	return;
+
+printme("fun_call1")
+printme("fun_call2")
+
+def changeme(mylist):
+	"changes the passed parameter in function"
+	mylist=[1,2,3]
+	print ("mylist - ", mylist)
+	return;
+mylist=[10,20,30]
+changeme(mylist)
+printme(mylist)
+
+import support
+#from support import printme, changeme # not sure why this is not working
+support.printme("fun_call")
+support.changeme([1,2,3])
+
+from schoolMathExamples import fibonacci
+fibonacci(100)
+
+#global variable
+def addMoney (txn):
+	"this function add txn amount to money"
+	global money
+	money = money + txn
+	print ("%s" %("\n"), "\n","%d" %(money)) # not sure what is the issue with print
+	print "\n", money
+	print ("%s" %("\n"),1000)
+	print ("%s" %("\n"))
+	print (1000)
+	#print "this is test print" 1000
+	return;
+
+money=1000
+addMoney(10)
+print (money)
+
+#dir() is a buil-in function
+
+print(dir(support))
+
+#globals and locals functions
+#print (globals())
+#print locals()
+def testGlobalsLocals():
+	par=""
+	print (globals())
+	print(locals())
+
+testGlobalsLocals()
+
+#learning packaging with package name phone
+import phone
+phone.pot("iphone6")
+phone.bob("iphone7")
+
+
 
 
 
