@@ -1,6 +1,6 @@
 #learning modules
 
-par=""
+par="test"
 def printme(par):
 	print ("printed by support module function printme() - ", par)
 	return;

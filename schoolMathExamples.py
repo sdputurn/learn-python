@@ -11,3 +11,6 @@ def fibonacci(n):
 		print " ",fib, 
 	return;
 
+if __name__ == "__main__":
+	fibonacci(100)
+

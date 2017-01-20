@@ -186,7 +186,7 @@ print(dir(support))
 #print locals()
 def testGlobalsLocals():
 	par=""
-	print (globals())
+	#print (globals()) #gives a big output
 	print(locals())
 
 testGlobalsLocals()
@@ -195,6 +195,99 @@ testGlobalsLocals()
 import phone
 phone.pot("iphone6")
 phone.bob("iphone7")
+
+print (dir(phone))
+#naming conventions
+# module_name, package_name, ClassName, method_name, ExceptionName
+# function_name, GLOBAL_CONSTANT_NAME, global_var_name, instance_var_name, function_parameter_name, local_var_name
+
+#class examples
+class Employee: #(object):
+	"""docstring for Employee"""
+	emp_count=0
+	def __init__(self, name, salary):
+		#super(Employee, self).__init__()
+		self.name = name
+		self.salary = salary
+		Employee.emp_count=Employee.emp_count+1
+
+	def display_count(self):
+		print ("total count = %d" %self.emp_count)
+
+	def display_employee(self):
+		print ("employee name %s, employee salary - %d"%(self.name, self.salary))
+
+emp1=Employee("sandeep",1000)
+emp1.display_count()
+emp1.display_employee()
+emp2=Employee("Jagat",1000)
+emp2.display_employee()
+emp2.display_count()
+
+print (emp1.emp_count, "emp2", emp2.emp_count, "employee", Employee.emp_count)
+print emp1.emp_count, "emp2", emp2.emp_count, "employee", Employee.emp_count #what is the difference from above print statement. above print tuple, whereas this prints variables values only
+emp1.salary = 2000
+#class fundtions
+print  ( getattr(emp1,'name'), hasattr(emp1,'salary'), setattr(emp1,'empid',1), delattr(emp1,'empid') )
+
+#Built in class attributes
+print ("Employee.__doc__:", Employee.__doc__)
+print ("Employee.__name__:", Employee.__name__)
+print ("Employee.__module__:", Employee.__module__)
+print ("Employee.__bases__:", Employee.__bases__)
+print ("Employee.__dict__:", Employee.__dict__ )
+
+class Library(Employee):
+	"this class stroe library related txn information"
+	def __init__(self,books):
+		self.books = books
+	def display_books(self):
+		print "employee - ", Employee.emp_count ,"has books", self.books
+
+emp3=Library(2)
+emp3.display_books()
+#emp3.display_employee()
+emp3.display_count()
+
+print (issubclass(Library,Employee), issubclass(Employee,Library), isinstance(emp3,Employee), isinstance(emp3,Library))
+print __name__
+
+#regular expressions
+import re
+line="this is a test text message #<testing re module> "
+match_obj = re.match('.*test text(.*) #<(.*) $',line,re.I)
+if match_obj:
+	print ("match_obj.groups()", match_obj.group(), match_obj.group(1),match_obj.group(2))
+else:
+	print("no match")
+
+#match vs search # match checks at the beginning of the string whereas search checks the entore string. 
+#del match_obj
+match_obj=re.match(r'text',line,re.I)
+if match_obj:
+	print ("match_obj.groups()", match_obj.group(), match_obj.group(1),match_obj.group(2))
+else:
+	print("no match")
+
+search_obj=re.search(r'text',line,re.I)
+if search_obj:
+	print(search_obj.group())
+else:
+	print "pattern not found"
+
+#can we create object of a module
+obj1=support.par #just testing this is not a object
+print obj1
+obj1="objtest"
+print obj1, support.par
+
+#obj=support()
+#print obj.par
+obj=support
+print obj.par
+print dir(obj)
+
+
 
 
 
