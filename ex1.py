@@ -113,7 +113,8 @@ i=0
 while (i<5): 
 	j=0
 	while (j <= i):
-		sys.stdout.write("* ")
+		# sys.stdout.write("* ")
+		print "* ",
 		j=j+1
 		#or j += 1
 	i += 1
@@ -275,7 +276,7 @@ if search_obj:
 else:
 	print "pattern not found"
 
-#can we create object of a module
+#can we create object of a module?
 obj1=support.par #just testing this is not a object
 print obj1
 obj1="objtest"
@@ -287,7 +288,9 @@ obj=support
 print obj.par
 print dir(obj)
 
-
+print "enter the limit of the list"
+limit=int(raw_input())
+print "entered value",  limit
 
 
 
