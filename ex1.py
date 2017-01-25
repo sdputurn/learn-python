@@ -288,9 +288,32 @@ obj=support
 print obj.par
 print dir(obj)
 
-print "enter the limit of the list"
-limit=int(raw_input())
-print "entered value",  limit
+# print "enter the limit of the list"
+# limit=int(raw_input())
+# print "entered value",  limit
+
+#File I/O
+# raw_input=int(raw_input("enter number"))
+# input=input("enter number..")
+# print raw_input, "input - " , input
+
+fo =open("foo.txt","wb+")
+print "file name", fo.name
+print "file closed", fo.closed
+print " file opening mode", fo.mode
+print "Softspace flag", fo.softspace
+fo.write("Python is a great language.\nYeah its great!!\n")	
+fo.close()
+
+
+fo = open("foo.txt", "ab+")
+var=fo.read(10)
+print "reading file foo.txt - ", var
+new_var = raw_input("enter content to put in file foo.txt...")
+fo.write( new_var)
+
+
+
 
 
 
