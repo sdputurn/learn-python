@@ -244,11 +244,17 @@ class Library(Employee):
 		self.books = books
 	def display_books(self):
 		print "employee - ", Employee.emp_count ,"has books", self.books
+	def display_employee(self):
+		emp_obj=Employee("Sandeep",10000)
+		return Employee("Sandeep",1000)
+
 
 emp3=Library(2)
 emp3.display_books()
 #emp3.display_employee()
 emp3.display_count()
+emp3.display_employee().display_employee()
+print "i have preinted display employee"
 
 print (issubclass(Library,Employee), issubclass(Employee,Library), isinstance(emp3,Employee), isinstance(emp3,Library))
 print __name__

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170201 20:25:23.012" generator="Robot 3.0.1 (Python 2.7.10 on darwin)">
+<suite source="/Users/sandeep/learn-python/learn-robotframework/test_sum/test_sum.robot" id="s1" name="Test Sum">
+<test id="s1-t1" name="Sum function Test">
+<kw name="test sum function">
+<arguments>
+<arg>${var1}</arg>
+<arg>${var2}</arg>
+</arguments>
+<kw name="My Sum" library="my_functions">
+<arguments>
+<arg>${var1}</arg>
+<arg>${var2}</arg>
+</arguments>
+<assign>
+<var>${return}</var>
+</assign>
+<msg timestamp="20170201 20:25:23.041" level="INFO">${return} = 9</msg>
+<status status="PASS" endtime="20170201 20:25:23.041" starttime="20170201 20:25:23.041"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${var1}+${var2}</arg>
+</arguments>
+<assign>
+<var>${int_output}</var>
+</assign>
+<msg timestamp="20170201 20:25:23.042" level="INFO">${int_output} = 9</msg>
+<status status="PASS" endtime="20170201 20:25:23.042" starttime="20170201 20:25:23.041"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${int_output}</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.042" starttime="20170201 20:25:23.042"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${return}</arg>
+<arg>${int_output}</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.043" starttime="20170201 20:25:23.043"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.043" starttime="20170201 20:25:23.041"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>3</arg>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.043" starttime="20170201 20:25:23.043"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.043" critical="yes" starttime="20170201 20:25:23.040"></status>
+</test>
+<test id="s1-t2" name="Subtract function test">
+<kw name="test sub function">
+<arguments>
+<arg>${var1}</arg>
+<arg>${var2}</arg>
+</arguments>
+<kw name="My Sub" library="my_functions">
+<arguments>
+<arg>${var1}</arg>
+<arg>${var2}</arg>
+</arguments>
+<assign>
+<var>${return}</var>
+</assign>
+<msg timestamp="20170201 20:25:23.045" level="INFO">${return} = -1</msg>
+<status status="PASS" endtime="20170201 20:25:23.045" starttime="20170201 20:25:23.044"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${var1}-${var2}</arg>
+</arguments>
+<assign>
+<var>${int_output}</var>
+</assign>
+<msg timestamp="20170201 20:25:23.045" level="INFO">${int_output} = -1</msg>
+<status status="PASS" endtime="20170201 20:25:23.045" starttime="20170201 20:25:23.045"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${int_output}</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.046" starttime="20170201 20:25:23.046"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${return}</arg>
+<arg>${int_output}</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.046" starttime="20170201 20:25:23.046"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.046" starttime="20170201 20:25:23.044"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.046" critical="yes" starttime="20170201 20:25:23.044"></status>
+</test>
+<test id="s1-t3" name="test_case_suite_test_001">
+<kw name="run my testcase">
+<arguments>
+<arg>${test_suite_var}</arg>
+<arg>testcase001</arg>
+</arguments>
+<kw name="Run Testcase" library="my_functions">
+<arguments>
+<arg>${var1}</arg>
+<arg>${var2}</arg>
+</arguments>
+<assign>
+<var>${return}</var>
+</assign>
+<msg timestamp="20170201 20:25:23.739" level="INFO">['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'check_mounted_volumes', 'os', 'paramiko', 'print_pattern', 'requests', 'ssh_connect', 'test_HTTP_REST']
+print 0
+print 1
+print 2
+print 3
+print 4
+print 0
+print 1
+print 2
+print 3
+print 4
+i am in module test_case_library
+print 0
+print 1
+print 2
+print 3
+print 4
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'check_mounted_volumes', 'name', 'os', 'paramiko', 'print_pattern', 'requests', 'ssh_connect', 'test_HTTP_REST']
+Pass
+200
+r.headers {'Content-Encoding': 'gzip', 'Expires': 'Wed, 01 Feb 2017 18:53:39 GMT', 'X-Content-Type-Options': 'nosniff', 'X-Powered-By': 'Express', 'Transfer-Encoding': 'chunked', 'Set-Cookie': '__cfduid=d0031461c5133918130745df42b67d9bf1485960819; expires=Thu, 01-Feb-18 14:53:39 GMT; path=/; domain=.typicode.com; HttpOnly', 'CF-Cache-Status': 'HIT', 'Cache-Control': 'public, max-age=14400', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare-nginx', 'Connection': 'keep-alive', 'Etag': 'W/"124-yv65LoT2uMHrpn06wNpAcQ"', 'Pragma': 'no-cache', 'Access-Control-Allow-Credentials': 'true', 'Date': 'Wed, 01 Feb 2017 14:53:39 GMT', 'CF-RAY': '32a63bef63743090-SIN', 'Content-Type': 'application/json; charset=utf-8', 'Via': '1.1 vegur'}
+r.content {
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}</msg>
+<msg timestamp="20170201 20:25:23.739" level="INFO">${return} = Pass</msg>
+<status status="PASS" endtime="20170201 20:25:23.739" starttime="20170201 20:25:23.047"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${return}</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.740" starttime="20170201 20:25:23.739"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${return}</arg>
+<arg>Pass</arg>
+</arguments>
+<msg timestamp="20170201 20:25:23.740" level="INFO">Argument types are:
+&lt;type 'str'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20170201 20:25:23.740" starttime="20170201 20:25:23.740"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.740" starttime="20170201 20:25:23.047"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.741" critical="yes" starttime="20170201 20:25:23.047"></status>
+</test>
+<test id="s1-t4" name="test_case_suite_test_002">
+<kw name="run my testcase">
+<arguments>
+<arg>${test_suite_var}</arg>
+<arg>testcase002</arg>
+</arguments>
+<kw name="Run Testcase" library="my_functions">
+<arguments>
+<arg>${var1}</arg>
+<arg>${var2}</arg>
+</arguments>
+<assign>
+<var>${return}</var>
+</assign>
+<msg timestamp="20170201 20:25:23.765" level="INFO">${return} = Pass</msg>
+<status status="PASS" endtime="20170201 20:25:23.765" starttime="20170201 20:25:23.742"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${return}</arg>
+</arguments>
+<status status="PASS" endtime="20170201 20:25:23.765" starttime="20170201 20:25:23.765"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${return}</arg>
+<arg>Pass</arg>
+</arguments>
+<msg timestamp="20170201 20:25:23.766" level="INFO">Argument types are:
+&lt;type 'str'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20170201 20:25:23.766" starttime="20170201 20:25:23.766"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.766" starttime="20170201 20:25:23.741"></status>
+</kw>
+<status status="PASS" endtime="20170201 20:25:23.766" critical="yes" starttime="20170201 20:25:23.741"></status>
+</test>
+<status status="PASS" endtime="20170201 20:25:23.767" starttime="20170201 20:25:23.015"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Test Sum" pass="4">Test Sum</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
