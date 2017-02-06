@@ -1,5 +1,5 @@
 *** Settings ***
-Library  my_functions.py
+Library  my_robot_functions.py
 
 *** Keywords ***
 test sum function

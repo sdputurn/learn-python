@@ -1,6 +1,7 @@
 import paramiko
 import os
 import requests
+import json
 def print_pattern():
 	i=0
 	while (i<5):
@@ -38,8 +39,8 @@ def ssh_connect(conn_details):
 #test some REST calls
 
 def test_HTTP_REST(url,num):
-	headers={'content-type': 'apllication/json'}
-	r=requests.get(url +'/'+ num)
+	headers={'content-type': 'application/json'}
+	r=requests.get(url +'/'+ num, headers=headers)
 	print r.status_code
 	print 'r.headers', r.headers
 	print 'r.content',r.content
@@ -47,7 +48,10 @@ def test_HTTP_REST(url,num):
 		print 'Pass'
 	else:
 		return 'Fail'
-	r=requests.post(url,auth=('bootstrapme', 'deleteme'),verify=False, data='{"title":"test message"}', headers=headers )
+	data={'test':'test message'}
+	print json.dumps(data)
+	r=requests.post(url, data=json.dumps(data), headers=headers )
+	print 'r.url', r.url
 	print r.status_code
 	print 'r.headers', r.headers
 	print 'r.content',r.content

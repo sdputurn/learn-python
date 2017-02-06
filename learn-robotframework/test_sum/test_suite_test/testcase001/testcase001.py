@@ -34,12 +34,12 @@ print dir(my_library.test_case_library)
 
 result=check_mounted_volumes({"hostname":"192.168.56.101"})
 if result == "Pass":
-	print colored("Pass", "green")
+	print "check mounted volumes", colored("Pass", "green")
 else:
 	sys.exit(1)
 
 result = test_HTTP_REST("http://jsonplaceholder.typicode.com/posts","1")
 if result == "Pass":
-	print colored("Pass", "green")
+	print "check HTTP REST", colored("Pass", "green")
 else:
 	sys.exit(1)
