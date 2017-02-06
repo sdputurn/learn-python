@@ -1,3 +1,4 @@
+#this line is added to test git pull behabiour, when there file present as modefied and when the files are staged
 try:
 	fo = open("test_file.txt","r")
 	#print fo.read()
