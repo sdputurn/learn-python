@@ -7,6 +7,7 @@ for pth in os.environ['PATH'].split(':'):
 sys.path.append(os.environ['PATH'])
 sys.path.append(os.getcwd())
 my_library_path= os.getcwd() + os.sep +'my_library'
+#or my_library_path = os.path.join(os.getcwd(), 'my_library')
 #sys.path.append(my_library_path)
 
 from my_library.test_functions import *

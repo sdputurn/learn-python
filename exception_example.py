@@ -88,14 +88,14 @@ print "employee object", emp1
 class MyException(NameError):
 	"this class handles user defined exceptions"
 	def __init__(self,args):
-		self.arg = args
+		self.args = args
 
 try:
 	level =1
 	if level < 2:
-		raise MyException,"level too low"
+		raise MyException(("level too low"))
 except MyException,e:
-	print "looks like some variable undefined - ",e.arg
+	print "looks like some variable undefined - ",e
 
 
 
