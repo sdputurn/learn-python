@@ -39,7 +39,7 @@ def ssh_connect(conn_details):
 #test some REST calls
 
 def test_HTTP_REST(url,num):
-	headers={'content-type': 'application/json'}
+	headers={'content-type': 'application/json', 'X-Vault-Token': 'sdfdfd'}
 	r=requests.get(url +'/'+ num, headers=headers)
 	print r.status_code
 	print 'r.headers', r.headers
@@ -50,7 +50,10 @@ def test_HTTP_REST(url,num):
 		return 'Fail'
 	data={'test':'test message'}
 	print json.dumps(data)
-	r=requests.post(url, data=json.dumps(data), headers=headers )
+	print data.keys()
+	print data.values()
+	print data['test']
+	r=requests.post(url, data='{"test":"message"}', headers=headers )
 	print 'r.url', r.url
 	print r.status_code
 	print 'r.headers', r.headers

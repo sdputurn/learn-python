@@ -10,6 +10,7 @@ my_library_path= os.getcwd() + os.sep +'my_library'
 #or my_library_path = os.path.join(os.getcwd(), 'my_library')
 #sys.path.append(my_library_path)
 
+
 from my_library.test_functions import *
 #import my_library.test_functions
 from my_library import test_functions
@@ -33,11 +34,11 @@ print dir(my_library.test_case_library)
 # from my_library_test_function import *
 # my_print()
 
-result=check_mounted_volumes({"hostname":"192.168.56.101"})
-if result == "Pass":
-	print "check mounted volumes", colored("Pass", "green")
-else:
-	sys.exit(1)
+# result=check_mounted_volumes({"hostname":"192.168.56.101"})
+# if result == "Pass":
+# 	print "check mounted volumes", colored("Pass", "green")
+# else:
+# 	sys.exit(1)
 
 result = test_HTTP_REST("http://jsonplaceholder.typicode.com/posts","1")
 if result == "Pass":
