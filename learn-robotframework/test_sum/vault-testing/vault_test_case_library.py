@@ -4,6 +4,7 @@ import sys
 import getopt
 import json
 import os
+import paramiko
 
 
 
@@ -35,44 +36,82 @@ def read_secrets(url, app_id, access_token):
 	else:
 		print 'Fail'
 
+#def get_container_id_from_container_ip(contianer_ip):
+
+
 def check_secrets_passed_to_app_container(app_id):
-	choice=''
-	print "checking if the app is already running"
-	headers={'content-type': 'application/json'}
-	r=requests.get("http://jsonplaceholder.typicode.com" + '/'+ app_id, headers=headers)
-	print r.status_code, "r.content - ", r.content
-	if r.status_code != 404:
-		print "seems like app is already running.. please remove app and then test again"
-		choice = raw_input("would you like to destoy running app (y/n).. ")
-	if choice in ('y', 'Y'):
-		r=requests.delete("http://jsonplaceholder.typicode.com" + '/'+ app_id)
-		if r.status_code ==200:
-			print "application deleted, proceesing with the test.."
-		else:
-			print "currently unable to delete app. please delte app and run this test"
-			return "Fail"
-	else:
-		return "Fail"
-	print "launching app with app_id - ", app_id
-	f_obj=open(os.getcwd() + os.sep + 'vault-testing' + os.sep + 'app.json', "r+")
-	buffer=json.load(f_obj)
-	f_obj.close()
-	print buffer
-	buffer['test']= app_id
-	jbuffer=json.dumps(buffer)
-	print jbuffer
-	r=requests.post("http://jsonplaceholder.typicode.com" + '/' + 'posts', data=jbuffer, headers=headers)
-	print r.status_code, "r.content - ",r.content
-	if r.status_code == 201:
-		print "application launched successfully"
-		print "r.content - ", r.content
-	else:
-		return "Fail"
-	print "reading secrets from containers"
+	# choice=''
+	# print "checking if the app is already running"
+	# headers={'content-type': 'application/json'}
+	# r=requests.get("http://jsonplaceholder.typicode.com" + '/'+ app_id, headers=headers)
+	# print r.status_code, "r.content - ", r.content
+	# if r.status_code != 404:
+	# 	print "seems like app is already running.. please remove app and then test again"
+	# 	choice = raw_input("would you like to destoy running app (y/n).. ")
+	# if choice in ('y', 'Y'):
+	# 	r=requests.delete("http://jsonplaceholder.typicode.com" + '/'+ app_id)
+	# 	if r.status_code ==200:
+	# 		print "application deleted, proceesing with the test.."
+	# 	else:
+	# 		print "currently unable to delete app. please delte app and run this test"
+	# 		return "Fail"
+	# else:
+	# 	return "Fail"
+	# print "launching app with app_id - ", app_id
+	# f_obj=open(os.getcwd() + os.sep + 'vault-testing' + os.sep + 'app.json', "r+")
+	# buffer=json.load(f_obj)
+	# f_obj.close()
+	# print buffer
+	# buffer['test']= app_id
+	# jbuffer=json.dumps(buffer)
+	# print jbuffer
+	# r=requests.post("http://jsonplaceholder.typicode.com" + '/' + 'posts', data=jbuffer, headers=headers)
+	# print r.status_code, "r.content - ",r.content
+	# if r.status_code == 201:
+	# 	print "application launched successfully"
+	# 	print "r.content - ", r.content
+	# else:
+	# 	return "Fail"
+	print "proceesing futher to read secrets from containers"
+	print "querying marathon json or the app.. currently using localfile"
 	f_obj=open(os.getcwd()+'/vault-testing/container_info.json', "r+")
 	buffer=json.load(f_obj)
+	f_obj.close()
 	jbuffer=json.dumps(buffer)
-	ssh_client = ssh_connect(jbuffer[host_ip])
+	print jbuffer, type(jbuffer), buffer, type(buffer)
+	print buffer['host_ip']#, jbuffer['container_ip']
+	ssh_client = ssh_connect(buffer['host_ip'])
+	stdin, stdout, stderr = ssh_client.exec_command( "docker network inspect --format '{{json .Containers }}'  bridge")
+	print "got list of continer from the host - ", buffer['host_ip']
+	x=stdout.readlines()
+	print "printinggggggggggggggg", x[0], type(x[0])
+	j=json.loads(x[0])
+	z=stderr.readlines()
+	print stdout.readlines(),x, "errorrrrrr" , z,"input......", stdin , type(x), "\n printing jjjjjjjjj", j, type(j)
+	container_id = ''
+	count=0
+	for key in j:
+		count = count + 1
+		if j[key]['IPv4Address'] == buffer['container_ip']:
+			container_id = key
+			break
+		if len(j.keys()) == count:
+			print "container not found.. looks like some error.. exiting.."
+			sys.exit(2)
+	print " got continer id - ", container_id
+	cmd = "docker exec -it "+ container_id + " sh -c env"
+	print "running command...............", cmd
+	stdin, stdout, stderr = ssh_client.exec_command(cmd, get_pty=True)
+	x=stdout.readlines()
+	#y=stdin.readlines()
+	z=stderr.readlines()
+	print "out", x, "stdinnnnnnnn", "stderr - ---- ", z
+	if "TERM=xterm\r\n" in x:
+		print "keys present "
+
+
+
+
 
 def check_mounted_volumes(json_dict):
 	ssh_client=ssh_connect('192.168.56.101')
